@@ -3,7 +3,6 @@ package ru.kata.spring.boot_security.demo.repositories;
 import org.springframework.stereotype.Repository;
 import ru.kata.spring.boot_security.demo.exception_handling.NoSuchUserException;
 import ru.kata.spring.boot_security.demo.models.User;
-import ru.kata.spring.boot_security.demo.models.UserDTO;
 
 import javax.persistence.EntityManager;
 import java.util.List;
