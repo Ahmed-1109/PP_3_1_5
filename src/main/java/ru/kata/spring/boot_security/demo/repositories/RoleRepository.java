@@ -8,4 +8,6 @@ public interface RoleRepository {
     Role getRoleByName(String name);
 
     List<Role> getRoles();
+
+    void save(Role role);
 }

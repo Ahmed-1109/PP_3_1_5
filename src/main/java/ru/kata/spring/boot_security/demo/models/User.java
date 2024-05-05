@@ -1,7 +1,9 @@
 package ru.kata.spring.boot_security.demo.models;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -15,6 +17,8 @@ import java.util.Objects;
 import java.util.Set;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -38,7 +42,7 @@ public class User implements UserDetails {
 
     @NotEmpty(message = "Поле не может быть пустым")
     @Email
-    @Column(name = "email", length = 40, nullable = false, unique = true, columnDefinition = "text")
+    @Column(name = "email", length = 40, nullable = false, unique = true)
     private String email;
 
     @NotEmpty(message = "Пароль не может быть пустым")
@@ -55,6 +59,14 @@ public class User implements UserDetails {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    public User(String firstName, String lastName, String email, String password, Set<Role> roles) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
     }
 
     @Override

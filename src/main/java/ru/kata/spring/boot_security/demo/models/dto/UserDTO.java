@@ -1,7 +1,7 @@
-package ru.kata.spring.boot_security.demo.models;
-
+package ru.kata.spring.boot_security.demo.models.dto;
 
 import lombok.Data;
+import ru.kata.spring.boot_security.demo.models.Role;
 
 import java.util.Set;
 

@@ -1,7 +1,7 @@
 package ru.kata.spring.boot_security.demo.repositories;
 
 import org.springframework.stereotype.Repository;
-import ru.kata.spring.boot_security.demo.exception_handling.NoSuchUserException;
+import ru.kata.spring.boot_security.demo.exceptions.NoSuchUserException;
 import ru.kata.spring.boot_security.demo.models.User;
 
 import javax.persistence.EntityManager;
@@ -23,7 +23,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> getUsers() {
-        return entityManager.createQuery("select u from User u join fetch u.roles", User.class).getResultList();
+        return entityManager.createQuery("select distinct u from User u left join fetch u.roles", User.class).getResultList();
     }
 
     @Override

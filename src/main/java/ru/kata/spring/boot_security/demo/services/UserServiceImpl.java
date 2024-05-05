@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.models.Role;
 import ru.kata.spring.boot_security.demo.models.User;
-import ru.kata.spring.boot_security.demo.models.UserDTO;
+import ru.kata.spring.boot_security.demo.models.dto.UserDTO;
 import ru.kata.spring.boot_security.demo.repositories.RoleRepository;
 import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 
@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
         }
         userRepository.addUser(user);
     }
+
 
     @Transactional
     @Override
@@ -82,5 +83,12 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return findByUserName(email);
+    }
+
+    @Override
+    @Transactional
+    public void add(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.addUser(user);
     }
 }

@@ -1,4 +1,4 @@
-package ru.kata.spring.boot_security.demo.exception_handling;
+package ru.kata.spring.boot_security.demo.exceptions;
 
 public class UserErrorResponse {
     private String message;

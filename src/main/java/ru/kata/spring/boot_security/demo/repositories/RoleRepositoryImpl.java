@@ -25,4 +25,9 @@ public class RoleRepositoryImpl implements RoleRepository {
     public List<Role> getRoles() {
         return entityManager.createQuery("select r from Role r", Role.class).getResultList();
     }
+
+    @Override
+    public void save(Role role) {
+        entityManager.persist(role);
+    }
 }
